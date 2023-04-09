@@ -1,15 +1,14 @@
 # chunkk
-Generating dataset for finetuning pre-trained GPT models
+Recursively generating a dataset for finetuning pre-trained GPT models from a large text file, like a book
 
 ## Usage
 ```
 node --input [inputFilePath] --output [outputFilePath] --numIterations [number]`
 ```
 
-**input** _(requred)_ - the file path for `txt` (for example a book, or documentation)  
+**input** _(requred)_ - the file path for `txt` (for example a book, or a documentation)  
 **output** - file path for the generated JSON file // default output.json  
 **numIterations** - how many times you want to ask for questions for each chunk // default 3  
-
 
 
 ### Here is how it works:
