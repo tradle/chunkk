@@ -1,4 +1,3 @@
-const { getChatGPTResponseForForm } = require('./openAiTestBoard')
 const { chunkAndSummarize } = require('./chunkk')
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
@@ -14,6 +13,8 @@ Usage:
 Options:
 
   --input, -i      path/to/models directory
+  --output, -o      path/to/models directory
+  --numIterations, -n   number of oterations for questioning ChatGPT
 
 `
 
@@ -23,18 +24,11 @@ const argv = require('minimist')(process.argv.slice(2), {
   }
 })
 
-const { input } = argv
+const { input, output, numIterations } = argv
 const tasks = []
 
 if (input) {
   ;(async () => {
-     const summary = await chunkAndSummarize(input, openai)
+     const summary = await chunkAndSummarize({input, output, numIterations, openai})
   })(input)
-}
-else {
-  ;(async () => {
-    let response = await getChatGPTResponseForForm({ message: PAGES, openai });
-    console.log(response)
-    debugger
-  })();
 }
