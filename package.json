@@ -4,13 +4,11 @@
   "description": "set of utilities to talk to ChatGPT",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "help": "node index.js --help"
   },
   "author": "",
   "license": "ISC",
-  "scripts": {
-    "start": "node index.js "
-  },
   "dependencies": {
     "bluebird": "^3.5.0",
     "gpt-3-encoder": "^1.1.4",
