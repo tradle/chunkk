@@ -23,6 +23,10 @@ Options:
 const argv = require('minimist')(process.argv.slice(2), {
   alias: {
     i: 'input',
+    o: 'output',
+    t: 'numTokens',
+    n: 'numIterations',
+    m: 'model'
   }
 })
 
@@ -32,6 +36,6 @@ if (help)
   console.log(HELP)
 else if (input) {
   ;(async () => {
-     const summary = await chunkAndSummarize({input, output, numIterations, model, numberOfTokens, openai})
+     const summary = await chunkAndSummarize({input, output, numIterations, model, numTokens, openai})
   })(input)
 }

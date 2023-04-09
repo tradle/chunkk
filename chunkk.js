@@ -4,21 +4,21 @@ const fs = require('fs');
 // debugger
 var MAX_TOKENS = 2000
 // Define number of times to repeat question generation
-var NUMBER_OF_REPETITIONS = 3
+var NUMBER_OF_ITERATIONS = 3
 var CHAT_GPT_MODEL = 'gpt-3.5-turbo'
 
 // Function to split text into chunks and summarize each chunk using OpenAI's GPT-3 API
-async function chunkAndSummarize({input, output, numIterations, numberOfTokens, model, openai}) {
+async function chunkAndSummarize({input, output, numIterations, numTokens, model, openai}) {
   // Read text from file
   let text =  fs.readFileSync(input, 'utf-8');
   if (model)
     CHAT_GPT_MODEL = model
-  if (numberOfTokens)
-    MAX_TOKENS = numberOfTokens
+  if (numTokens)
+    MAX_TOKENS = numTokens
 
   const stream = fs.createWriteStream(output || 'output.json') //, { flags: 'a' }); // create a writable stream to a file, append to the end of the file
   if (numIterations)
-    NUMBER_OF_REPETITIONS = numIterations
+    NUMBER_OF_ITERATIONS = numIterations
   // Split text into chunks
   const textChunks = splitTextIntoChunks(text);
 console.log (`Chunks: ${textChunks.length}`)
@@ -103,7 +103,7 @@ async function getQuestionsAndSummaries({textChunks, openai, stream}) {
 
     let questionsRequests = []
     // Generate a set of questions for the chunk multiple times
-    for (let i=0; i<NUMBER_OF_REPETITIONS; i++)
+    for (let i=0; i<NUMBER_OF_ITERATIONS; i++)
       questionsRequests.push(getQuestions({chunk, openai, first: !i }))
 
     let allQuestionResponses = await Promise.all(questionsRequests)
