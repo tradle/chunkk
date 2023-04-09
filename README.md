@@ -1,5 +1,5 @@
 # chunkk
-Recursively generating a dataset for finetuning pre-trained GPT models from a large text file, like a book
+Recursively generating a dataset for finetuning pre-trained GPT models from a large text file, like a book or a documentation
 
 ## Usage
 ```
