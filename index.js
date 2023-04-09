@@ -12,10 +12,12 @@ Usage:
 
 Options:
 
-  --input, -i      path/to/models directory
+  --input, -i       path/to/models directory
   --output, -o      path/to/models directory
   --numIterations, -n   number of oterations for questioning ChatGPT
-
+  --numTokens, -t  max number of tokens for the models
+  --model, -m       ChatGPT model
+  --help, -h       Show usage
 `
 
 const argv = require('minimist')(process.argv.slice(2), {
@@ -24,11 +26,12 @@ const argv = require('minimist')(process.argv.slice(2), {
   }
 })
 
-const { input, output, numIterations } = argv
+const { input, output, numIterations, help, model, numTokens } = argv
 const tasks = []
-
-if (input) {
+if (help)
+  console.log(HELP)
+else if (input) {
   ;(async () => {
-     const summary = await chunkAndSummarize({input, output, numIterations, openai})
+     const summary = await chunkAndSummarize({input, output, numIterations, model, numberOfTokens, openai})
   })(input)
 }

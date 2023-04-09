@@ -2,24 +2,29 @@
 const {encode, decode} = require('gpt-3-encoder');
 const fs = require('fs');
 // debugger
-const MAX_TOKENS = 2000
+var MAX_TOKENS = 2000
 // Define number of times to repeat question generation
-var NUMBER_OF_REPETITIONS
+var NUMBER_OF_REPETITIONS = 3
+var CHAT_GPT_MODEL = 'gpt-3.5-turbo'
 
 // Function to split text into chunks and summarize each chunk using OpenAI's GPT-3 API
-async function chunkAndSummarize({input, output, numIterations, openai}) {
+async function chunkAndSummarize({input, output, numIterations, numberOfTokens, model, openai}) {
   // Read text from file
   let text =  fs.readFileSync(input, 'utf-8');
+  if (model)
+    CHAT_GPT_MODEL = model
+  if (numberOfTokens)
+    MAX_TOKENS = numberOfTokens
 
   const stream = fs.createWriteStream(output || 'output.json') //, { flags: 'a' }); // create a writable stream to a file, append to the end of the file
-  NUMBER_OF_REPETITIONS = numIterations || 3
-
+  if (numIterations)
+    NUMBER_OF_REPETITIONS = numIterations
   // Split text into chunks
   const textChunks = splitTextIntoChunks(text);
+console.log (`Chunks: ${textChunks.length}`)
   writeToStream('[', stream)
   // Generate questions and summaries for each chunk using OpenAI's GPT-3 API
   const questionsAndSummaries = await getQuestionsAndSummariesRecursive({textChunks, openai, stream});
-  console.log('end of program')
   writeToStream('\n]', stream)
   debugger
   stream.end();
@@ -140,7 +145,7 @@ async function getQuestions({chunk, openai, first}) {
     content = `Please create some more questions for the following chunk of text:\n\n${chunk}\n`
 
   let completion = await openai.createChatCompletion({
-    model: "gpt-3.5-turbo",
+    model: CHAT_GPT_MODEL,
     temperature: 0.2,
     messages: [
       {role: 'system', content},
