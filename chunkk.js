@@ -9,11 +9,10 @@ var NUMBER_OF_REPETITIONS
 // Function to split text into chunks and summarize each chunk using OpenAI's GPT-3 API
 async function chunkAndSummarize({input, output, numIterations, openai}) {
   // Read text from file
-  const stream = fs.createWriteStream(output || 'output.json') //, { flags: 'a' }); // create a writable stream to a file, append to the end of the file
-
-  NUMBER_OF_REPETITIONS = numIterations || 3
-
   let text =  fs.readFileSync(input, 'utf-8');
+
+  const stream = fs.createWriteStream(output || 'output.json') //, { flags: 'a' }); // create a writable stream to a file, append to the end of the file
+  NUMBER_OF_REPETITIONS = numIterations || 3
 
   // Split text into chunks
   const textChunks = splitTextIntoChunks(text);
