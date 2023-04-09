@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js "
   },
   "dependencies": {
     "bluebird": "^3.5.0",
