@@ -12,7 +12,7 @@ node -i [inputFilePath] -o [outputFilePath] -n [number] -t [number] --m [chatGpt
 **input** _(requred)_ - the file path for `txt` (for example a book, or a documentation)  
 **output** - file path for the generated JSON file // default output.json  
 **numIterations** - how many times you want to ask for questions for each chunk // default 3  
-**numTokens** - max number of tokens for ChatGPT model of your choice // default 2000
+**numTokens** - max number of tokens for ChatGPT model of your choice // default 2000  
 **model** - ChatGPT model // default **gpt-3.5-turbo**
 
 #### Example
