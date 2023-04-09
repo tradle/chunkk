@@ -30,5 +30,9 @@ node index.js --input '../Downloads/TedChiang-The truth of fact the truth of fee
 - Summaries are concatenated into a new text, and the process repeats recursively until just one chunk is left
 - All questions, answers and summaries are recorded in JSON format in file **outputFile** unless you specified the
 
-_Note: This is not going to work for huge files for now, since the reading of the file is done with fs.readFileSync_
+## TODO
+- Add streamining. This is not going to work for huge files for now, since the reading of the file is done with fs.readFileSync
+- Add quizzes. 
 
+
+#
