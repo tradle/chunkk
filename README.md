@@ -3,13 +3,22 @@ Recursively generating a dataset for finetuning pre-trained GPT models from a la
 
 ## Usage
 ```
-node --input [inputFilePath] --output [outputFilePath] --numIterations [number]`
+node --input [inputFilePath] --output [outputFilePath] --numIterations [number] --numTokens [number] --model [chatGptModel]
 ```
-
+or
+```
+node -i [inputFilePath] -o [outputFilePath] -n [number] -t [number] --m [chatGptModel]
+```
 **input** _(requred)_ - the file path for `txt` (for example a book, or a documentation)  
 **output** - file path for the generated JSON file // default output.json  
 **numIterations** - how many times you want to ask for questions for each chunk // default 3  
+**numTokens** - max number of tokens for ChatGPT model of your choice // default 2000
+**model** - ChatGPT model // default **gpt-3.5-turbo**
 
+#### Example
+```
+node index.js --input '../Downloads/TedChiang-The truth of fact the truth of feeling.txt' --numIterations 5 --output '../Downloads/Ted.json' --numTokens 2500 --model 'gpt-4'
+```
 
 ### Here is how it works:
 - Takes a big text file
