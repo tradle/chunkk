@@ -20,7 +20,7 @@ node -i [inputFilePath] -o [outputFilePath] -n [number] -t [number] --m [chatGpt
 node index.js --input '../Downloads/TedChiang-The truth of fact the truth of feeling.txt' --numIterations 5 --output '../Downloads/Ted.json' --numTokens 2500 --model 'gpt-4'
 ```
 
-### Here is how it works:
+### Here is how it works
 - Takes a big text file
 - Splits it in `numberTokens` chunks
 - For each chunk:
@@ -31,5 +31,4 @@ node index.js --input '../Downloads/TedChiang-The truth of fact the truth of fee
 - All questions, answers and summaries are recorded in JSON format in file **outputFile** unless you specified the
 
 _Note: This is not going to work for huge files for now, since the reading of the file is done with fs.readFileSync_
-
 
