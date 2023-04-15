@@ -1,6 +1,6 @@
 // Import required modules
 const fs = require('fs');
-const { countTokens, splitTextIntoChunks, MAX_TOKENS } = require('./utils')
+const { countTokens, splitTextIntoChunks } = require('./utils')
 // debugger
 // Define number of times to repeat question generation
 var NUMBER_OF_ITERATIONS = 3
@@ -12,14 +12,12 @@ async function chunkAndSummarize({input, output, numIterations, numTokens, model
   let text =  fs.readFileSync(input, 'utf-8');
   if (model)
     CHAT_GPT_MODEL = model
-  if (numTokens)
-    MAX_TOKENS = numTokens
 
   const stream = fs.createWriteStream(output || 'output.json') //, { flags: 'a' }); // create a writable stream to a file, append to the end of the file
   if (numIterations)
     NUMBER_OF_ITERATIONS = numIterations
   // Split text into chunks
-  const textChunks = splitTextIntoChunks(text);
+  const textChunks = splitTextIntoChunks(text, numTokens);
 console.log (`Chunks: ${textChunks.length}`)
   writeToStream('[', stream)
   // Generate questions and summaries for each chunk using OpenAI's GPT-3 API

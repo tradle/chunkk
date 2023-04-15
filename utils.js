@@ -6,7 +6,9 @@ function countTokens(text) {
   return tokens.length;
 }
 // Function to split text into chunks based on token count
-function splitTextIntoChunks(text) {
+function splitTextIntoChunks(text, numTokens) {
+  if (!numTokens)
+    numTokens = MAX_TOKENS
   const chunks = [];
 
   let currentChunk = '';
@@ -20,13 +22,13 @@ function splitTextIntoChunks(text) {
     // console.log("patagraph tokens: ", paragraphTokens);
 
     // If the paragraph would push the token count over the limit, split it into sentences and add each sentence to a new chunk
-    if (tokens + paragraphTokens > MAX_TOKENS) {
+    if (tokens + paragraphTokens > numTokens) {
       const sentences = paragraph.split(/[.!?]+/);
 
       for (const sentence of sentences) {
         const sentenceTokens = countTokens(sentence);
 
-        if (tokens + sentenceTokens > MAX_TOKENS) {
+        if (tokens + sentenceTokens > numTokens) {
           chunks.push(currentChunk);
           // console.log('Chunk created (sentence split):', currentChunk);
           // console.log("");
@@ -54,6 +56,5 @@ function splitTextIntoChunks(text) {
 
 module.exports = {
   countTokens,
-  splitTextIntoChunks,
-  MAX_TOKENS
+  splitTextIntoChunks
 }
