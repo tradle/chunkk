@@ -1,0 +1,19 @@
+{
+  "companyName": "",
+  "state": "",
+  "directors": [
+    {
+      "firstName": "",
+      "lastName": "",
+      "jobTitle": []
+    }
+  ],
+  "shareHolders": [
+    {
+      "firstName": "",
+      "lastName": "",
+      "numberOfShares": "",
+      "companyName": ""
+    }
+  ]
+}
