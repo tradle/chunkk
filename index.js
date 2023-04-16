@@ -15,13 +15,13 @@ Options:
 
   --help, -h       Show usage
 
-For generating dataset for finetuning pre-trained GPT models
+For generating dataset for fine tuning pre-trained GPT models
 
   --input, -i       path file with main content
   --output, -o      path to output file
   --numTokens, -t   max number of tokens for the models
   --model, -m       ChatGPT model
-  --numIterations, -n   number of oterations for questioning ChatGPT
+  --numIterations, -n   number of iterations for questioning ChatGPT
 
 For prompt testing
 
