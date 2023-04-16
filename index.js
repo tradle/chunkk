@@ -26,7 +26,7 @@ For generating dataset for fine tuning pre-trained GPT models
 For prompt testing
 
   --input, -i       path file with main content
-  --prompt, -p      path to the file that contains prompt in a valid JSON format. This is the one to tweak.
+  --prompt, -p      path to the file that contains the prompt in a valid JSON format. This is the one to tweak.
   --template, -l    path to the file that has JSON that needs to be filled by ChatGPT
   --numTokens, -t   max number of tokens for the models
   --model, -m       ChatGPT model
