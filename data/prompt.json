@@ -2,11 +2,10 @@
   "task": "You are a JSON creating machine!",
   "taskRules": [
     "You are not allowed to produce invalid JSON.",
-    "Please use the tokens to fill in the values for the properties in the JSON template below",
-    "The tokens are from the articles of association document. Please extract as much information as possible in accordance with JSON template",
+    "Please use the text to fill in the values for the properties in the JSON template below",
+    "The text is from the articles of association document. Please extract as much information as possible in accordance with JSON template",
     "You are not allowed to add any new properties outside of the template",
     "Return the original JSON template if there is no relevant information found",
-    "You are not allowed to override in JSON the existing values.",
     "If applicable, include currency symbol if present for these properties purchasePrice",
     "Return countries as two letter country code in ISO 3166 format."
   ]
